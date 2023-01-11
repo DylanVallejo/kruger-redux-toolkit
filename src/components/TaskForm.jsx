@@ -47,16 +47,16 @@ function TaskForm() {
         if (params.id) {
             setTask(tasks.find((task)=> task.id === params.id))
         }
-            
-        console.log(params)
-    }, [])
+    }, [params.id, tasks])
     
     // const stateTask = useSelector(state => state.tasks)
     return (
-        <form onSubmit={handleSubmit}>
-            <input value={task.title} name='title' type="text" placeholder="Title" onChange={handleChange}/>
-            <textarea value={task.description} name='description' placeholder="Description" cols={30} rows={10} onChange={handleChange}></textarea>
-            <button>Save</button>
+        <form onSubmit={handleSubmit} className='bg-zinc-800 max-w-sm p-4'>
+            <label htmlFor='title' className='block text-sm font-bold mb-2'>Task: </label>
+            <input className='w-full p-2 rounded-md bg-zinc-600 mb-2' value={task.title} name='title' type="text" placeholder="Title" onChange={handleChange}/>
+            <label htmlFor='description' className='block text-sm font-bold mb-2'>Description: </label>
+            <textarea className='w-full p-2 rounded-md bg-zinc-600 mb-2' value={task.description} name='description' placeholder="Description" onChange={handleChange}></textarea>
+            <button className='bg-indigo-600 px-2 py-1'>Save</button>
         </form>
     )
 }
